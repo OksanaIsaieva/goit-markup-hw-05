@@ -622,10 +622,12 @@ a {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 1;
+  transition: opacity 300ms linear, visibility 300ms linear;
 }
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 .modal-window {
   position: absolute;
@@ -638,7 +640,11 @@ a {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 300ms;
+}
+.backdrop.is-hidden .modal-window {
+  transform: translate(-50%, -50%) scale(0);
 }
 .close-btn {
   position: absolute;
